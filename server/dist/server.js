@@ -5,11 +5,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const users_service_1 = require("./services/users.service");
 const app = (0, express_1.default)();
 dotenv_1.default.config();
 // declare a route with a response
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.send("What's up doc ?!");
+});
+// LIST
+app.get("/api/users", (req, res) => {
+    // const filterBy = {
+    //     txt: req.query.txt,
+    //     minSpeed: +req.query.minSpeed,
+    //     pageIdx: +req.query.page || 0
+    // }
+    users_service_1.usersService.query().then((users) => {
+        console.log(users);
+        res.send(users);
+    });
 });
 // start the server
 app.listen(process.env.BACK_PORT, () => {

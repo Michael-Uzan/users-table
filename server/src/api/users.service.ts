@@ -27,15 +27,7 @@ async function getById(userId: number) {
 }
 
 function add(user: IUser) {
-  const sqlCmd = `INSERT INTO users (fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperience)
-              VALUES ("${user.fullName}",
-                      "${user.country}",
-                      "${user.city}",
-                      "${user.email}",
-                      "${user.phoneNumber}",
-                      "${user.jobTitle}",
-                      "${user.yearsOfExperience}",
-                      )`;
+  const sqlCmd = `INSERT INTO users (fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperince) VALUES ("${user.fullName}", "${user.country}", "${user.city}", "${user.email}", "${user.phoneNumber}", "${user.jobTitle}", "${user.yearsOfExperince}" )`;
 
   return dbService.runSQL(sqlCmd);
 }
@@ -48,17 +40,9 @@ async function update({
   email,
   phoneNumber,
   jobTitle,
-  yearsOfExperience,
+  yearsOfExperince,
 }: IUser) {
-  const sqlCmd = `UPDATE users SET
-  fullName = "${fullName}",
-  country = "${country}",
-  city = ${city},
-  email = ${email},
-  phoneNumber = ${phoneNumber},
-  jobTitle = ${jobTitle},
-  yearsOfExperience = ${yearsOfExperience}
-  WHERE users.id = ${id}`;
+  const sqlCmd = `UPDATE users SET fullName = "${fullName}", country = "${country}", city = "${city}", email = "${email}", phoneNumber = "${phoneNumber}", jobTitle = "${jobTitle}", yearsOfExperince = "${yearsOfExperince}" WHERE users.id = ${id}`;
 
   const okPacket: any = await dbService.runSQL(sqlCmd);
   if (okPacket.affectedRows !== 0) return okPacket;

@@ -35,28 +35,12 @@ function getById(userId) {
     });
 }
 function add(user) {
-    const sqlCmd = `INSERT INTO users (fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperience)
-              VALUES ("${user.fullName}",
-                      "${user.country}",
-                      "${user.city}",
-                      "${user.email}",
-                      "${user.phoneNumber}",
-                      "${user.jobTitle}",
-                      "${user.yearsOfExperience}",
-                      )`;
+    const sqlCmd = `INSERT INTO users (fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperince) VALUES ("${user.fullName}", "${user.country}", "${user.city}", "${user.email}", "${user.phoneNumber}", "${user.jobTitle}", "${user.yearsOfExperince}" )`;
     return db_service_1.dbService.runSQL(sqlCmd);
 }
-function update({ id, fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperience, }) {
+function update({ id, fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperince, }) {
     return __awaiter(this, void 0, void 0, function* () {
-        const sqlCmd = `UPDATE user set
-  fullName = "${fullName}",
-  country = "${country}",
-  city = ${city},
-  email = ${email},
-  phoneNumber = ${phoneNumber},
-  jobTitle = ${jobTitle},
-  yearsOfExperience = ${yearsOfExperience}
-  WHERE bug.id = ${id}`;
+        const sqlCmd = `UPDATE users SET fullName = "${fullName}", country = "${country}", city = "${city}", email = "${email}", phoneNumber = "${phoneNumber}", jobTitle = "${jobTitle}", yearsOfExperince = "${yearsOfExperince}" WHERE users.id = ${id}`;
         const okPacket = yield db_service_1.dbService.runSQL(sqlCmd);
         if (okPacket.affectedRows !== 0)
             return okPacket;
@@ -64,7 +48,7 @@ function update({ id, fullName, country, city, email, phoneNumber, jobTitle, yea
     });
 }
 function remove(userId) {
-    const sqlCmd = `DELETE FROM bug WHERE bug._id = ${userId}`;
+    const sqlCmd = `DELETE FROM users WHERE users.id = ${userId}`;
     return db_service_1.dbService
         .runSQL(sqlCmd)
         .then((okPacket) => okPacket.affectedRows === 1

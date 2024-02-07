@@ -5,6 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dbService = void 0;
 const mysql_1 = __importDefault(require("mysql"));
+exports.dbService = {
+    runSQL,
+};
 const connection = mysql_1.default.createConnection({
     host: "localhost",
     port: 3306,
@@ -28,8 +31,5 @@ function runSQL(sqlCommand) {
         });
     });
 }
-exports.dbService = {
-    runSQL,
-};
 // connection.end();
 //# sourceMappingURL=db.service.js.map

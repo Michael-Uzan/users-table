@@ -1,6 +1,10 @@
-import mysql from "mysql";
+import mysql, { Connection } from "mysql";
 
-const connection = mysql.createConnection({
+export const dbService = {
+  runSQL,
+};
+
+const connection: Connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
@@ -22,9 +26,5 @@ function runSQL(sqlCommand: string) {
     });
   });
 }
-
-export const dbService = {
-  runSQL,
-};
 
 // connection.end();

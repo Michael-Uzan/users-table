@@ -32,7 +32,4 @@ exports.dbService = {
     runSQL,
 };
 // connection.end();
-// module.exports = {
-//   runSQL,
-// };
 //# sourceMappingURL=db.service.js.map

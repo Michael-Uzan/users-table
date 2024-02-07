@@ -4,6 +4,7 @@ interface IPropsType {
   className?: string;
   size?: number;
   full?: boolean;
+  onClick?: () => null;
 }
 
 export const IconSearch = ({ className, size = 20 }: IPropsType) => (

@@ -1,7 +1,7 @@
 import React, { Fragment, ReactNode } from 'react';
 
 interface IWithId {
-  _id: string;
+  id: string;
 }
 
 interface IPropsType<T extends IWithId> {
@@ -19,7 +19,7 @@ export const GenericList = <T extends IWithId>({
   return (
     <div className={className}>
       {items.map((item: T) => (
-        <Fragment key={item._id}>{renderItem(item)}</Fragment>
+        <Fragment key={item.id}>{renderItem(item)}</Fragment>
       ))}
     </div>
   );

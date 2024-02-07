@@ -4,11 +4,9 @@ import React from 'react';
 
 function App() {
   return (
-    <div>
-      <main className="main-container">
-        <AppRoutes />;
-      </main>
-    </div>
+    <main className="main-container">
+      <AppRoutes />;
+    </main>
   );
 }
 

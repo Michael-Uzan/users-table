@@ -1,0 +1,11 @@
+.add-new-user {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+
+  input {
+    width: 100%;
+    text-align: center;
+  }
+}

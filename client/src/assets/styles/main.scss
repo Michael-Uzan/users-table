@@ -11,9 +11,14 @@
 @import 'basics/buttons.scss';
 
 // Views
+@import 'views/homePage';
 
 // Components
 @import 'cmps/userMsg';
+@import 'cmps/header';
+@import 'cmps/tableTitles';
+@import 'cmps/tableRow';
+@import 'cmps/addNewUser';
 
 // Components - Common
 @import 'cmps/common/image';

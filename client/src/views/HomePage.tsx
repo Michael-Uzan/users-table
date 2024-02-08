@@ -9,11 +9,14 @@ import { utilsService } from 'utils/utils';
 import { useForm } from 'hooks/useForm';
 
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState<IUser[]>([]);
-  const [newUser, handleChange, setNewUser] = useForm(resetFields());
+  const [newUser, handleChange, setNewUser] = useForm(
+    utilsService.resetFields(),
+  );
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -37,10 +40,35 @@ export const HomePage = () => {
     try {
       const savedNewUser = await usersService.save(newUser);
       setUsers([savedNewUser, ...users]);
-      setNewUser(resetFields());
+      setNewUser(utilsService.resetFields());
       eventBusService.showSuccessMsg('user added');
     } catch {
       eventBusService.showErrorMsg('cannot add user');
+    }
+  };
+
+  const updateUser = async (newUser: IUser) => {
+    if (!utilsService.validateUser(newUser)) {
+      eventBusService.showErrorMsg('all fields are required');
+      return;
+    }
+    try {
+      await usersService.save(newUser);
+      const loadedUsers = await usersService.query();
+      setUsers(loadedUsers);
+      eventBusService.showSuccessMsg('user saved');
+    } catch {
+      eventBusService.showErrorMsg('cannot save user');
+    }
+  };
+  const deleteUser = async (userId: number) => {
+    try {
+      await usersService.remove(userId);
+      setUsers(users.filter((user) => user.id !== userId));
+      eventBusService.showSuccessMsg('user removed');
+      navigate(-1);
+    } catch {
+      eventBusService.showErrorMsg('cannot remove user');
     }
   };
 
@@ -51,7 +79,7 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
-      <Outlet />
+      <Outlet context={[updateUser, deleteUser]} />
       <Header onAddNewUser={addNewUser} />
       <TableTitles onSortUsers={sortUsers} />
       <AddNewUser newUser={newUser} handleChange={handleChange} />
@@ -61,15 +89,3 @@ export const HomePage = () => {
     </div>
   );
 };
-
-function resetFields() {
-  return {
-    fullName: '',
-    country: '',
-    city: '',
-    email: '',
-    phoneNumber: 0,
-    jobTitle: '',
-    yearsOfExperince: 0,
-  };
-}

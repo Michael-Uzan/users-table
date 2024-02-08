@@ -3,6 +3,7 @@ import { IUser } from 'interfaces/IUser';
 export const utilsService = {
   sortBy,
   validateUser,
+  resetFields,
 };
 
 function sortBy(items: IUser[], sortBy: keyof IUser, order: number) {
@@ -40,4 +41,16 @@ function validateUser(user: IUser): boolean {
   }
 
   return true;
+}
+
+function resetFields() {
+  return {
+    fullName: '',
+    country: '',
+    city: '',
+    email: '',
+    phoneNumber: 0,
+    jobTitle: '',
+    yearsOfExperince: 0,
+  };
 }

@@ -4,7 +4,8 @@ interface IPropsType {
   className?: string;
   size?: number;
   full?: boolean;
-  onClick?: () => null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onClick?: any;
 }
 
 export const IconSearch = ({ className, size = 20 }: IPropsType) => (
@@ -39,13 +40,14 @@ export const IconPencil = ({ className }: IPropsType) => (
   </svg>
 );
 
-export const IconClose = ({ className, size = 24 }: IPropsType) => (
+export const IconClose = ({ className, size = 24, onClick }: IPropsType) => (
   <svg
     className={className}
     width={size}
     height={size}
     fill="#42526e"
     viewBox="0 0 24 24"
+    onClick={onClick}
   >
     <g data-name="Layer 2">
       <g data-name="close">

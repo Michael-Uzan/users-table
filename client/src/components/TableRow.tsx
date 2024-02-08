@@ -1,6 +1,7 @@
 import { IUser } from 'interfaces/IUser';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface IPropsType {
   user: IUser;
@@ -8,6 +9,7 @@ interface IPropsType {
 
 export const TableRow = ({ user }: IPropsType) => {
   const {
+    id,
     fullName,
     country,
     city,
@@ -17,14 +19,16 @@ export const TableRow = ({ user }: IPropsType) => {
     yearsOfExperince,
   } = user;
   return (
-    <div className="table-row pointer">
-      <div>{fullName}</div>
-      <div>{country}</div>
-      <div>{city}</div>
-      <div>{email}</div>
-      <div>{phoneNumber}</div>
-      <div>{jobTitle}</div>
-      <div>{yearsOfExperince}</div>
-    </div>
+    <Link to={id.toString()}>
+      <div className="table-row pointer">
+        <div>{fullName}</div>
+        <div>{country}</div>
+        <div>{city}</div>
+        <div>{email}</div>
+        <div>{phoneNumber}</div>
+        <div>{jobTitle}</div>
+        <div>{yearsOfExperince}</div>
+      </div>
+    </Link>
   );
 };

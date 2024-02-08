@@ -26,10 +26,11 @@ async function getById(userId: number) {
   throw new Error(`user id ${userId} not found`);
 }
 
-function add(user: IUser) {
+async function add(user: IUser) {
   const sqlCmd = `INSERT INTO users (fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperince) VALUES ("${user.fullName}", "${user.country}", "${user.city}", "${user.email}", "${user.phoneNumber}", "${user.jobTitle}", "${user.yearsOfExperince}" )`;
 
-  return dbService.runSQL(sqlCmd);
+  const okPacket: any = await dbService.runSQL(sqlCmd);
+  return getById(okPacket.insertId);
 }
 
 async function update({

@@ -1,18 +1,57 @@
+import { IUser } from 'interfaces/IUser';
+
 import React from 'react';
 
-// use hook
-// show user message
+interface IPropsType {
+  newUser: IUser;
+  handleChange: () => void;
+}
 
-export const AddNewUser = () => {
+export const AddNewUser = ({ newUser, handleChange }: IPropsType) => {
+  const {
+    fullName,
+    country,
+    city,
+    email,
+    phoneNumber,
+    jobTitle,
+    yearsOfExperince,
+  } = newUser;
+
   return (
     <div className="add-new-user">
-      <input type="text" name="" placeholder="" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
+      <input
+        type="text"
+        name="fullName"
+        value={fullName}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="country"
+        value={country}
+        onChange={handleChange}
+      />
+      <input type="text" name="city" value={city} onChange={handleChange} />
+      <input type="text" name="email" value={email} onChange={handleChange} />
+      <input
+        type="number"
+        name="phoneNumber"
+        value={phoneNumber || ''}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="jobTitle"
+        value={jobTitle}
+        onChange={handleChange}
+      />
+      <input
+        type="number"
+        name="yearsOfExperince"
+        value={yearsOfExperince || ''}
+        onChange={handleChange}
+      />
     </div>
   );
 };

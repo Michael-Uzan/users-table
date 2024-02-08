@@ -50,12 +50,13 @@ function addUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const user = req.body;
-            const addedBoard = yield users_service_1.usersService.add(user);
-            res.send(addedBoard);
+            const addedUser = yield users_service_1.usersService.add(user);
+            console.log("!!!!!!!!!", addedUser);
+            res.send(addedUser);
         }
         catch (err) {
-            console.error("Failed to add board", err);
-            res.status(500).send({ err: "Failed to add board" });
+            console.error("Failed to add user", err);
+            res.status(500).send({ err: "Failed to add user" });
         }
     });
 }

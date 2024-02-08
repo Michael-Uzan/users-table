@@ -35,8 +35,11 @@ function getById(userId) {
     });
 }
 function add(user) {
-    const sqlCmd = `INSERT INTO users (fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperince) VALUES ("${user.fullName}", "${user.country}", "${user.city}", "${user.email}", "${user.phoneNumber}", "${user.jobTitle}", "${user.yearsOfExperince}" )`;
-    return db_service_1.dbService.runSQL(sqlCmd);
+    return __awaiter(this, void 0, void 0, function* () {
+        const sqlCmd = `INSERT INTO users (fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperince) VALUES ("${user.fullName}", "${user.country}", "${user.city}", "${user.email}", "${user.phoneNumber}", "${user.jobTitle}", "${user.yearsOfExperince}" )`;
+        const okPacket = yield db_service_1.dbService.runSQL(sqlCmd);
+        return getById(okPacket.insertId);
+    });
 }
 function update({ id, fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperince, }) {
     return __awaiter(this, void 0, void 0, function* () {

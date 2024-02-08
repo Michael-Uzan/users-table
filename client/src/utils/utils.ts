@@ -2,6 +2,7 @@ import { IUser } from 'interfaces/IUser';
 
 export const utilsService = {
   sortBy,
+  validateUser,
 };
 
 function sortBy(items: IUser[], sortBy: keyof IUser, order: number) {
@@ -22,4 +23,21 @@ function sortBy(items: IUser[], sortBy: keyof IUser, order: number) {
   });
 
   return items;
+}
+
+function validateUser(user: IUser): boolean {
+  for (const key in user) {
+    // eslint-disable-next-line no-prototype-builtins
+    if (user.hasOwnProperty(key)) {
+      const value = user[key as keyof IUser];
+      if (typeof value === 'string' && value.trim() === '') {
+        return false; // Empty string
+      }
+      if (typeof value === 'number' && value === 0) {
+        return false; // Zero value
+      }
+    }
+  }
+
+  return true;
 }

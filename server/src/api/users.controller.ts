@@ -37,11 +37,11 @@ async function getUserById(req: Request, res: Response) {
 async function addUser(req: Request, res: Response) {
   try {
     const user = req.body;
-    const addedBoard = await usersService.add(user);
-    res.send(addedBoard);
+    const addedUser = await usersService.add(user);
+    res.send(addedUser);
   } catch (err) {
-    console.error("Failed to add board", err);
-    res.status(500).send({ err: "Failed to add board" });
+    console.error("Failed to add user", err);
+    res.status(500).send({ err: "Failed to add user" });
   }
 }
 

@@ -83,6 +83,7 @@ export const HomePage = () => {
       <Outlet context={[updateUser, deleteUser]} />
       <Header
         criteria={criteria}
+        usersName={users.map(({ fullName }) => fullName)}
         setCriteria={setCriteria}
         onAddNewUser={addNewUser}
         onFilterUsers={() => loadUsers(criteria)}

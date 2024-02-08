@@ -8,10 +8,12 @@
   }
 
   .search-input {
-    padding: 8px 15px;
-    border-radius: 1rem;
-    font-size: 14px;
-    width: 200px;
+    input {
+      padding: 8px 15px;
+      border-radius: 1rem;
+      font-size: 14px;
+      width: 200px;
+    }
   }
 
   .button-header {

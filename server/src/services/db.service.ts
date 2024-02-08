@@ -10,7 +10,6 @@ const connection: Connection = mysql.createConnection({
   user: "root",
   password: "password",
   database: "exam",
-  // insecureAuth: true,
 });
 
 connection.connect((error: Error) => {
@@ -26,5 +25,3 @@ function runSQL(sqlCommand: string) {
     });
   });
 }
-
-// connection.end();

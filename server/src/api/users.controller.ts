@@ -24,9 +24,7 @@ async function getUsers(req: Request, res: Response) {
 async function getUserById(req: Request, res: Response) {
   try {
     const userId = req.params.id;
-    // const filterBy = req.query;
     const user = await usersService.getById(+userId);
-    // board = _filterBoard(filterBy, board);
     res.json(user);
   } catch (err) {
     console.error("Failed to get user", err);

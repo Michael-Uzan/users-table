@@ -2,6 +2,7 @@ import { HomePage } from 'views/HomePage';
 
 import { useRoutes } from 'react-router-dom';
 import React from 'react';
+import { UserEditor } from 'views/UserEditor';
 
 export const AppRoutes = () => {
   const routes = useRoutes([
@@ -12,6 +13,7 @@ export const AppRoutes = () => {
     {
       path: '/',
       element: <HomePage />,
+      children: [{ path: '/:userId', element: <UserEditor /> }],
     },
     // {
     //     path: '/',

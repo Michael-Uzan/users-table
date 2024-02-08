@@ -6,4 +6,9 @@
   text-transform: capitalize;
   font-weight: bold;
   text-align: center;
+  border-bottom: 1px solid $bgcColor;
+
+  &:hover {
+    outline: 2px solid $mainColor;
+  }
 }

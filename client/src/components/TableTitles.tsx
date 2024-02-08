@@ -6,7 +6,7 @@ export const TableTitles = () => {
   return (
     <div className="table-titles">
       {TITLES.map((title) => (
-        <div key={title} className="pointer">
+        <div key={title} className="table-title pointer">
           {title}
         </div>
       ))}

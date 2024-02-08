@@ -8,6 +8,7 @@ import { Header } from 'components/Header';
 import { TableTitles } from 'components/TableTitles';
 import { TableRow } from 'components/TableRow';
 import { AddNewUser } from 'components/AddNewUser';
+import { Outlet } from 'react-router-dom';
 
 export const HomePage = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -27,6 +28,7 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
+      <Outlet />
       <Header />
       <TableTitles />
       <AddNewUser />

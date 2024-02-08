@@ -17,7 +17,7 @@ export const TableRow = ({ user }: IPropsType) => {
     yearsOfExperince,
   } = user;
   return (
-    <div className="table-row">
+    <div className="table-row pointer">
       <div>{fullName}</div>
       <div>{country}</div>
       <div>{city}</div>

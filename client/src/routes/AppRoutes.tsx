@@ -6,19 +6,11 @@ import React from 'react';
 
 export const AppRoutes = () => {
   const routes = useRoutes([
-    // {
-    //   path: '/product/:productId',
-    //   element: <ProductView />,
-    // },
     {
       path: '/',
       element: <HomePage />,
       children: [{ path: '/:userId', element: <UserEditor /> }],
     },
-    // {
-    //     path: '/',
-    //     component: HomePage,
-    // }
   ]);
 
   return routes;

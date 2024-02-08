@@ -4,17 +4,12 @@ import { httpService } from './http.service';
 export const usersService = {
   query,
   getUserById,
-  //   get,
-  //   post,
-  // put,
   remove,
-  //   postMany,
   save,
 };
 
-function query(): Promise<IUser[]> {
-  return httpService.get('users');
-  //   return httpService.get(`boards/${boardId}`, { filterBy: filterBy });
+function query(criteria: string | null = null): Promise<IUser[]> {
+  return httpService.get('users', { name: criteria });
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

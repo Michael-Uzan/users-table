@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconSearch } from './common/Icons';
 import { Button } from './common/Button';
 import Image from './common/Image';
@@ -6,11 +7,19 @@ import imgAddUser from 'assets/imgs/add-user.png';
 import React from 'react';
 
 interface IPropsType {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  criteria: string;
+  setCriteria: any;
   onAddNewUser: () => any;
+  // eslint-disable-next-line no-unused-vars,
+  onFilterUsers: (criteria?: null | string) => any;
 }
 
-export const Header = ({ onAddNewUser }: IPropsType) => {
+export const Header = ({
+  criteria,
+  setCriteria,
+  onAddNewUser,
+  onFilterUsers,
+}: IPropsType) => {
   return (
     <div className="header flex space-between align-center">
       <h1 className="title">{'Users Table'}</h1>
@@ -20,8 +29,13 @@ export const Header = ({ onAddNewUser }: IPropsType) => {
             className="search-input"
             type="text"
             placeholder="Enter full name"
+            value={criteria}
+            onChange={(ev) => setCriteria(ev.target.value)}
           />
-          <Button className="button-header flex align-center">
+          <Button
+            className="button-header flex align-center"
+            onClick={onFilterUsers}
+          >
             <IconSearch />
             <div className="button-header-title search">{'Search'}</div>
           </Button>

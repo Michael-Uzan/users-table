@@ -76,7 +76,6 @@ function removeUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const userId = req.params.id;
-            console.log("!!!!!!!!!!!!", userId);
             const removedId = yield users_service_1.usersService.remove(+userId);
             res.send(removedId);
         }

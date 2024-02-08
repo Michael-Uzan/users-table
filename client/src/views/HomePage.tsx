@@ -17,20 +17,20 @@ export const HomePage = () => {
   const [newUser, handleChange, setNewUser] = useForm(
     utilsService.resetFields(),
   );
+  const [criteria, setCriteria] = useState('');
 
   useEffect(() => {
-    const loadUsers = async () => {
-      try {
-        const loadedUsers = await usersService.query();
-        setUsers(loadedUsers);
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.warn(e);
-      }
-    };
-
     loadUsers();
   }, []);
+
+  const loadUsers = async (criteria: null | string = null) => {
+    try {
+      const loadedUsers = await usersService.query(criteria);
+      setUsers(loadedUsers);
+    } catch (e) {
+      eventBusService.showErrorMsg(`can't load users`);
+    }
+  };
 
   const addNewUser = async () => {
     if (!utilsService.validateUser(newUser)) {
@@ -54,13 +54,14 @@ export const HomePage = () => {
     }
     try {
       await usersService.save(newUser);
-      const loadedUsers = await usersService.query();
+      const loadedUsers = await usersService.query(criteria);
       setUsers(loadedUsers);
       eventBusService.showSuccessMsg('user saved');
     } catch {
       eventBusService.showErrorMsg('cannot save user');
     }
   };
+
   const deleteUser = async (userId: number) => {
     try {
       await usersService.remove(userId);
@@ -80,7 +81,12 @@ export const HomePage = () => {
   return (
     <div className="home-page">
       <Outlet context={[updateUser, deleteUser]} />
-      <Header onAddNewUser={addNewUser} />
+      <Header
+        criteria={criteria}
+        setCriteria={setCriteria}
+        onAddNewUser={addNewUser}
+        onFilterUsers={() => loadUsers(criteria)}
+      />
       <TableTitles onSortUsers={sortUsers} />
       <AddNewUser newUser={newUser} handleChange={handleChange} />
       {users.map((user) => (

@@ -25,7 +25,7 @@
     padding-bottom: 85px;
     color: $fontColor;
     background-color: #f4f5f7;
-    border-radius: 5px;
+    border-radius: 15px;
     width: 550px;
     margin-bottom: 40px;
 
@@ -33,6 +33,23 @@
       position: absolute;
       right: 4px;
       top: 4px;
+    }
+
+    .inputs {
+      margin-bottom: 20px;
+      label {
+        margin-bottom: 10px;
+      }
+    }
+
+    .controls {
+      gap: 20px;
+
+      .control {
+        padding: 10px;
+        font-size: 13px;
+        color: $fontColor;
+      }
     }
   }
 }

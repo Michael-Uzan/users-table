@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { IUser } from 'interfaces/IUser';
 
 import React from 'react';
@@ -21,7 +22,9 @@ export const TableRow = ({ user }: IPropsType) => {
   return (
     <Link to={id.toString()}>
       <div className="table-row pointer">
-        <div>{fullName}</div>
+        <div className={classNames(yearsOfExperince <= 1 ? 'bold' : null)}>
+          {fullName}
+        </div>
         <div>{country}</div>
         <div>{city}</div>
         <div>{email}</div>

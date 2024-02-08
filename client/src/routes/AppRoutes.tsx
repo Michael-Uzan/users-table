@@ -1,8 +1,8 @@
 import { HomePage } from 'views/HomePage';
+import { UserEditor } from 'views/UserEditor';
 
 import { useRoutes } from 'react-router-dom';
 import React from 'react';
-import { UserEditor } from 'views/UserEditor';
 
 export const AppRoutes = () => {
   const routes = useRoutes([

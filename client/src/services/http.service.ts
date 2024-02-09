@@ -21,7 +21,7 @@ export const httpService = {
 
 async function ajax(
   endpoint: string,
-  method: any = 'GET',
+  method: string = 'GET',
   data: any,
 ): Promise<any> {
   try {

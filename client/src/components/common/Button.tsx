@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 interface IPropsType {
   className?: string;
   children?: ReactNode;
-  onClick?: () => null;
+  onClick?: () => null | void;
 }
 
 export const Button = ({ className, children, onClick }: IPropsType) => {

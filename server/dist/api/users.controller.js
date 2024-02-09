@@ -35,9 +35,7 @@ function getUserById(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const userId = req.params.id;
-            // const filterBy = req.query;
             const user = yield users_service_1.usersService.getById(+userId);
-            // board = _filterBoard(filterBy, board);
             res.json(user);
         }
         catch (err) {

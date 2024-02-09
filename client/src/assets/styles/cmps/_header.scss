@@ -7,13 +7,12 @@
     margin: 0;
   }
 
-  .search-input {
-    input {
-      padding: 8px 15px;
-      border-radius: 1rem;
-      font-size: 14px;
-      width: 200px;
-    }
+  .icon-close:hover {
+    opacity: 0.7;
+  }
+
+  .results {
+    margin-right: 10px;
   }
 
   .button-header {

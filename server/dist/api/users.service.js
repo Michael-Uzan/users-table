@@ -20,10 +20,7 @@ exports.usersService = {
 };
 function query(criteria = {}) {
     const namePart = (criteria === null || criteria === void 0 ? void 0 : criteria.name) || "";
-    console.log("!!!!!", criteria);
-    // const query = `SELECT * FROM users`;
     const sqlCmd = `SELECT * FROM users WHERE users.fullName LIKE '%${namePart}%'`;
-    //   var query = `SELECT * FROM users WHERE users.fulNname LIKE '%${namePart}%' OR bug.description LIKE '%${namePart}%'`;
     return db_service_1.dbService.runSQL(sqlCmd);
 }
 function getById(userId) {

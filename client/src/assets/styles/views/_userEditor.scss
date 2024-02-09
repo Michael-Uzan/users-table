@@ -22,17 +22,21 @@
     top: 40px;
     z-index: 2;
     margin: 0 8px;
-    padding-bottom: 85px;
+    padding: 25px 0 55px 0;
     color: $fontColor;
     background-color: #f4f5f7;
     border-radius: 15px;
-    width: 550px;
+    width: 450px;
     margin-bottom: 40px;
 
     .close {
       position: absolute;
-      right: 4px;
-      top: 4px;
+      right: 6px;
+      top: 6px;
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
 
     .inputs {

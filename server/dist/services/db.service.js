@@ -14,7 +14,6 @@ const connection = mysql_1.default.createConnection({
     user: "root",
     password: "password",
     database: "exam",
-    // insecureAuth: true,
 });
 connection.connect((error) => {
     if (error)
@@ -31,5 +30,4 @@ function runSQL(sqlCommand) {
         });
     });
 }
-// connection.end();
 //# sourceMappingURL=db.service.js.map

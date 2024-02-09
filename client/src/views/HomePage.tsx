@@ -87,6 +87,7 @@ export const HomePage = () => {
         setCriteria={setCriteria}
         onAddNewUser={addNewUser}
         onFilterUsers={() => loadUsers(criteria)}
+        onClearResults={() => loadUsers()}
       />
       <TableTitles onSortUsers={sortUsers} />
       <AddNewUser newUser={newUser} handleChange={handleChange} />

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Button } from 'components/common/Button';
 import { IconClose } from 'components/common/Icons';
 import { useForm } from 'hooks/useForm';
@@ -6,6 +7,7 @@ import { utilsService } from 'utils/utils';
 
 import React, { useEffect } from 'react';
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { IUser } from 'interfaces/IUser';
 
 export const UserEditor = () => {
   const navigate = useNavigate();
@@ -14,8 +16,10 @@ export const UserEditor = () => {
     utilsService.resetFields(),
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [updateUser, deleteUser]: any = useOutletContext();
+  const [updateUser, deleteUser]: [
+    (newUser: IUser) => void,
+    (userId: number) => void,
+  ] = useOutletContext();
 
   useEffect(() => {
     const loadUser = async () => {

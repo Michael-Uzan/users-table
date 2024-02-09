@@ -13,7 +13,7 @@ function query(criteria: string | null = null): Promise<IUser[]> {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getUserById(userId: number): Promise<any> {
+function getUserById(userId: number) {
   return httpService.get(`users/${userId}`);
 }
 

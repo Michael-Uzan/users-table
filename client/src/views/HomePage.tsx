@@ -79,21 +79,23 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="home-page">
-      <Outlet context={[updateUser, deleteUser]} />
-      <Header
-        criteria={criteria}
-        usersName={users.map(({ fullName }) => fullName)}
-        setCriteria={setCriteria}
-        onAddNewUser={addNewUser}
-        onFilterUsers={() => loadUsers(criteria)}
-        onClearResults={() => loadUsers()}
-      />
-      <TableTitles onSortUsers={sortUsers} />
-      <AddNewUser newUser={newUser} handleChange={handleChange} />
-      {users.map((user) => (
-        <TableRow key={user.id} user={user} />
-      ))}
+    <div className="home-page-wrapper">
+      <div className="home-page">
+        <Outlet context={[updateUser, deleteUser]} />
+        <Header
+          criteria={criteria}
+          usersName={users.map(({ fullName }) => fullName)}
+          setCriteria={setCriteria}
+          onAddNewUser={addNewUser}
+          onFilterUsers={() => loadUsers(criteria)}
+          onClearResults={() => loadUsers()}
+        />
+        <TableTitles onSortUsers={sortUsers} />
+        <AddNewUser newUser={newUser} handleChange={handleChange} />
+        {users.map((user) => (
+          <TableRow key={user.id} user={user} />
+        ))}
+      </div>
     </div>
   );
 };

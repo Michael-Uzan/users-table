@@ -11,10 +11,10 @@ interface IPropsType {
   criteria: string;
   usersName: string[];
   setCriteria: any;
-  onAddNewUser: () => any;
-  onClearResults: () => any;
+  onAddNewUser: () => void;
+  onClearResults: () => void;
   // eslint-disable-next-line no-unused-vars,
-  onFilterUsers: (criteria?: null | string) => any;
+  onFilterUsers: (criteria?: null | string) => void;
 }
 
 export const Header = ({

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { LRUCache } from 'lru-cache';
 
 export const loadedImagesCache = new LRUCache({
-  // A reasonable amount of images to cover all UI elements + a single story.
+  // A reasonable amount of images to cover all UI elements.
   max: 150,
 });
 

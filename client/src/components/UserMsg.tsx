@@ -6,7 +6,7 @@ import React from 'react';
 export class UserMsg extends React.Component {
   removeEvent: any;
 
-  state: any | null = {
+  state: any = {
     msg: null,
   };
 

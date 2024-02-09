@@ -5,8 +5,7 @@ interface IPropsType {
   size?: number;
   full?: boolean;
   fill?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onClick?: any;
+  onClick?: () => void | null;
 }
 
 export const IconSearch = ({ className, size = 20 }: IPropsType) => (

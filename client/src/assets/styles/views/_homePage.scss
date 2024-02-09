@@ -1,5 +1,10 @@
-.home-page {
+.home-page-wrapper {
   margin: 30px 10px;
   border-radius: 20px;
   overflow: hidden;
+
+  .home-page {
+    overflow: auto;
+    height: 100%;
+  }
 }

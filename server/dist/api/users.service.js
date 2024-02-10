@@ -21,15 +21,16 @@ exports.usersService = {
 const USERS_TABLE = "user";
 function query(criteria = {}) {
     const namePart = (criteria === null || criteria === void 0 ? void 0 : criteria.name) || "";
-    const sqlCmd = `SELECT * FROM ${USERS_TABLE} WHERE user.fullName LIKE '%${namePart}%'`;
+    const sqlCmd = `SELECT * FROM ${USERS_TABLE} WHERE ${USERS_TABLE}.fullName LIKE '%${namePart}%'`;
     return db_service_1.dbService.runSQL(sqlCmd);
 }
 function getById(userId) {
     return __awaiter(this, void 0, void 0, function* () {
-        const sqlCmd = `SELECT * FROM ${USERS_TABLE} WHERE user.id = ${userId}`;
+        const sqlCmd = `SELECT * FROM ${USERS_TABLE} WHERE ${USERS_TABLE}.id = ${userId}`;
         const users = (yield db_service_1.dbService.runSQL(sqlCmd));
-        if (users.length === 1)
+        if (users.length === 1) {
             return users[0];
+        }
         throw new Error(`user id ${userId} not found`);
     });
 }
@@ -42,15 +43,16 @@ function add(user) {
 }
 function update({ id, fullName, country, city, email, phoneNumber, jobTitle, yearsOfExperience, }) {
     return __awaiter(this, void 0, void 0, function* () {
-        const sqlCmd = `UPDATE ${USERS_TABLE} SET fullName = "${fullName}", country = "${country}", city = "${city}", email = "${email}", phoneNumber = "${phoneNumber}", jobTitle = "${jobTitle}", yearsOfExperience = "${yearsOfExperience}" WHERE user.id = ${id}`;
+        const sqlCmd = `UPDATE ${USERS_TABLE} SET fullName = "${fullName}", country = "${country}", city = "${city}", email = "${email}", phoneNumber = "${phoneNumber}", jobTitle = "${jobTitle}", yearsOfExperience = "${yearsOfExperience}" WHERE ${USERS_TABLE}.id = ${id}`;
         const okPacket = yield db_service_1.dbService.runSQL(sqlCmd);
-        if (okPacket.affectedRows !== 0)
+        if (okPacket.affectedRows !== 0) {
             return okPacket;
+        }
         throw new Error(`No user updated - user id ${id}`);
     });
 }
 function remove(userId) {
-    const sqlCmd = `DELETE FROM ${USERS_TABLE} WHERE user.id = ${userId}`;
+    const sqlCmd = `DELETE FROM ${USERS_TABLE} WHERE ${USERS_TABLE}.id = ${userId}`;
     return db_service_1.dbService
         .runSQL(sqlCmd)
         .then((okPacket) => okPacket.affectedRows === 1

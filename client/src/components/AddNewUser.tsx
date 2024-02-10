@@ -37,35 +37,35 @@ export const AddNewUser = ({
       <input
         type="text"
         name="fullName"
-        placeholder="Enter full name"
+        placeholder="Enter Full Name"
         value={fullName}
         onChange={handleChange}
       />
       <input
         type="text"
         name="country"
-        placeholder="Enter country"
+        placeholder="Enter Country"
         value={country}
         onChange={handleChange}
       />
       <input
         type="text"
         name="city"
-        placeholder="Enter city"
+        placeholder="Enter City"
         value={city}
         onChange={handleChange}
       />
       <input
         type="text"
         name="email"
-        placeholder="Enter email"
+        placeholder="Enter Email"
         value={email}
         onChange={handleChange}
       />
       <input
         type="text"
         name="phoneNumber"
-        placeholder="Enter phone number"
+        placeholder="Enter Phone Number"
         value={phoneNumber}
         onChange={handleChange}
       />
@@ -83,8 +83,8 @@ export const AddNewUser = ({
         value={yearsOfExperience < 0 ? '' : yearsOfExperience}
         onChange={handleChange}
       />
-      <button type="submit" className="hide" />
       {/* An hide button just to evoke onSubmit on enter key */}
+      <button type="submit" className="hide" />
     </form>
   );
 };

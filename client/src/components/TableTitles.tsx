@@ -1,6 +1,8 @@
 import { IUser } from 'interfaces/IUser';
 
 import React, { useState } from 'react';
+import { IconArrow } from './common/Icons';
+import { classNames } from 'primereact/utils';
 
 interface IPropsType {
   title?: string;
@@ -35,6 +37,12 @@ const Title = ({ title, keyId, onSortUsers }: IPropsType) => {
   return (
     <div className="table-title pointer" onClick={clickHandler}>
       {title}
+      <span>
+        <IconArrow
+          size={10}
+          className={classNames('icon-arrow', order === -1 ? 'rotate' : null)}
+        />
+      </span>
     </div>
   );
 };

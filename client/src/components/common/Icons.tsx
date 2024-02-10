@@ -67,3 +67,15 @@ export const IconClose = ({
     </g>
   </svg>
 );
+
+export const IconArrow = ({ className, size = 100, fill }: IPropsType) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill={fill || '#212121'}
+  >
+    <polygon points="50 15, 100 100, 0 100" />
+  </svg>
+);

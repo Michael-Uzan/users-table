@@ -1,13 +1,18 @@
 import { IUser } from 'interfaces/IUser';
 
-import React from 'react';
+import React, { FormEvent } from 'react';
 
 interface IPropsType {
   newUser: IUser;
   handleChange: () => void;
+  onAddNewUser: () => void;
 }
 
-export const AddNewUser = ({ newUser, handleChange }: IPropsType) => {
+export const AddNewUser = ({
+  newUser,
+  handleChange,
+  onAddNewUser,
+}: IPropsType) => {
   const {
     fullName,
     country,
@@ -18,8 +23,17 @@ export const AddNewUser = ({ newUser, handleChange }: IPropsType) => {
     yearsOfExperience,
   } = newUser;
 
+  const onFormSubmit = (ev: FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    onAddNewUser();
+  };
+
   return (
-    <div className="add-new-user">
+    <form className="add-new-user" onSubmit={onFormSubmit}>
+      <div className="title-wrapper flex align-center justify-center">
+        <h3 className="title">{'Add new user'}</h3>
+        <span className="description">{'(Press "Enter" to save)'}</span>
+      </div>
       <input
         type="text"
         name="fullName"
@@ -69,6 +83,8 @@ export const AddNewUser = ({ newUser, handleChange }: IPropsType) => {
         value={yearsOfExperience < 0 ? '' : yearsOfExperience}
         onChange={handleChange}
       />
-    </div>
+      <button type="submit" className="hide" />
+      {/* An hide button just to evoke onSubmit on enter key */}
+    </form>
   );
 };

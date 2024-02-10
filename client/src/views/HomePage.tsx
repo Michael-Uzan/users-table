@@ -18,7 +18,8 @@ export const HomePage = () => {
   const [newUser, handleChange, setNewUser] = useForm(
     utilsService.resetFields(),
   );
-  const [criteria, setCriteria] = useState('');
+  const [criteria, setCriteria] = useState<string>('');
+  const [toggleAddNewUser, setToggleAddNewUser] = useState<boolean>(false);
 
   useEffect(() => {
     loadUsers();
@@ -87,12 +88,18 @@ export const HomePage = () => {
           criteria={criteria}
           usersName={users.map(({ fullName }) => fullName)}
           setCriteria={setCriteria}
-          onAddNewUser={addNewUser}
+          onToggleAddNewUser={() => setToggleAddNewUser(!toggleAddNewUser)}
           onFilterUsers={() => loadUsers(criteria)}
           onClearResults={() => loadUsers()}
         />
         <TableTitles onSortUsers={sortUsers} />
-        <AddNewUser newUser={newUser} handleChange={handleChange} />
+        {toggleAddNewUser ? (
+          <AddNewUser
+            newUser={newUser}
+            handleChange={handleChange}
+            onAddNewUser={addNewUser}
+          />
+        ) : null}
         {users.length > 0 ? (
           users.map((user) => <TableRow key={user.id} user={user} />)
         ) : (

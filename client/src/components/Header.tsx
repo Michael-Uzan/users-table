@@ -11,7 +11,7 @@ interface IPropsType {
   criteria: string;
   usersName: string[];
   setCriteria: any;
-  onAddNewUser: () => void;
+  onToggleAddNewUser: () => void;
   onClearResults: () => void;
   // eslint-disable-next-line no-unused-vars,
   onFilterUsers: (criteria?: null | string) => void;
@@ -21,7 +21,7 @@ export const Header = ({
   criteria,
   usersName,
   setCriteria,
-  onAddNewUser,
+  onToggleAddNewUser,
   onFilterUsers,
   onClearResults,
 }: IPropsType) => {
@@ -85,7 +85,7 @@ export const Header = ({
         </div>
         <Button
           className="button-header flex align-center"
-          onClick={onAddNewUser}
+          onClick={onToggleAddNewUser}
         >
           <Image className="button-header-img" src={imgAddUser} />
           <div className="button-header-title">{'Add New'}</div>

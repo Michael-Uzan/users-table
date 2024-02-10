@@ -33,7 +33,7 @@ export const Header = ({
     setSuggestions([...usersName].filter((name) => regex.test(name)));
   };
 
-  const searchHandler = () => {
+  const onSearch = () => {
     onFilterUsers();
     setSearchTerm(criteria);
   };
@@ -77,7 +77,7 @@ export const Header = ({
           />
           <Button
             className="button-header flex align-center"
-            onClick={searchHandler}
+            onClick={onSearch}
           >
             <IconSearch />
             <div className="button-header-title search">{'Search'}</div>

@@ -1,4 +1,4 @@
-import { UserMsg } from 'components/UserMsg';
+import UserMsg from 'components/UserMsg';
 import { AppRoutes } from 'routes/AppRoutes';
 
 import React from 'react';

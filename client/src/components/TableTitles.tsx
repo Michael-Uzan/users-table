@@ -1,7 +1,7 @@
 import { IUser } from 'interfaces/IUser';
+import { IconArrow } from './common/Icons';
 
 import React, { useState } from 'react';
-import { IconArrow } from './common/Icons';
 import { classNames } from 'primereact/utils';
 
 interface IPropsType {

@@ -19,6 +19,7 @@ export const TableRow = ({ user }: IPropsType) => {
     jobTitle,
     yearsOfExperience,
   } = user;
+
   return (
     <Link to={id.toString()}>
       <div className="table-row pointer">

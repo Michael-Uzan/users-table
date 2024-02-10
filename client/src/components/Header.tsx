@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconClose, IconSearch } from './common/Icons';
 import { Button } from './common/Button';
 import Image from './common/Image';
 import imgAddUser from 'assets/imgs/add-user.png';
 
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { AutoComplete } from 'primereact/autocomplete';
 
 interface IPropsType {
   criteria: string;
   usersName: string[];
-  setCriteria: any;
+  setCriteria: Dispatch<SetStateAction<string>>;
   onToggleAddNewUser: () => void;
   onClearResults: () => void;
   // eslint-disable-next-line no-unused-vars,

@@ -33,7 +33,7 @@ async function ajax(
     });
 
     return res.data;
-  } catch (err: any) {
+  } catch (err) {
     // eslint-disable-next-line no-console
     console.log(
       `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`,

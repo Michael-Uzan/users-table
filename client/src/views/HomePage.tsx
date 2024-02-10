@@ -2,6 +2,7 @@ import { Header } from 'components/Header';
 import { TableTitles } from 'components/TableTitles';
 import { TableRow } from 'components/TableRow';
 import { AddNewUser } from 'components/AddNewUser';
+import { NoResults } from 'components/NoResults';
 import { IUser } from 'interfaces/IUser';
 import { usersService } from 'services/users.service';
 import { eventBusService } from 'services/event-bus.service';
@@ -10,7 +11,6 @@ import { useForm } from 'hooks/useForm';
 
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { NoResults } from 'components/NoResults';
 
 export const HomePage = () => {
   const navigate = useNavigate();

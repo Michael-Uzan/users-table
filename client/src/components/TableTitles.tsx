@@ -4,6 +4,16 @@ import { IconArrow } from './common/Icons';
 import React, { useState } from 'react';
 import { classNames } from 'primereact/utils';
 
+const TITLES = [
+  { title: 'full name', keyId: 'fullName' },
+  { title: 'country', keyId: 'country' },
+  { title: 'city', keyId: 'city' },
+  { title: 'email', keyId: 'email' },
+  { title: 'phone number', keyId: 'phoneNumber' },
+  { title: 'job title', keyId: 'jobTitle' },
+  { title: 'years of experience', keyId: 'yearsOfExperience' },
+];
+
 interface IPropsType {
   title?: string;
   keyId?: string;
@@ -11,20 +21,18 @@ interface IPropsType {
   onSortUsers: (sortBy: keyof IUser, order: number) => void;
 }
 
-export const TableTitles = ({ onSortUsers }: IPropsType) => {
-  return (
-    <div className="table-titles">
-      {TITLES.map(({ title, keyId }) => (
-        <Title
-          title={title}
-          key={keyId}
-          keyId={keyId}
-          onSortUsers={onSortUsers}
-        />
-      ))}
-    </div>
-  );
-};
+export const TableTitles = ({ onSortUsers }: IPropsType) => (
+  <div className="table-titles">
+    {TITLES.map(({ title, keyId }) => (
+      <Title
+        title={title}
+        key={keyId}
+        keyId={keyId}
+        onSortUsers={onSortUsers}
+      />
+    ))}
+  </div>
+);
 
 const Title = ({ title, keyId, onSortUsers }: IPropsType) => {
   const [order, setOrder] = useState<number>(1);
@@ -46,13 +54,3 @@ const Title = ({ title, keyId, onSortUsers }: IPropsType) => {
     </div>
   );
 };
-
-const TITLES = [
-  { title: 'full name', keyId: 'fullName' },
-  { title: 'country', keyId: 'country' },
-  { title: 'city', keyId: 'city' },
-  { title: 'email', keyId: 'email' },
-  { title: 'phone number', keyId: 'phoneNumber' },
-  { title: 'job title', keyId: 'jobTitle' },
-  { title: 'years of experience', keyId: 'yearsOfExperience' },
-];

@@ -17,12 +17,12 @@ export const TableRow = ({ user }: IPropsType) => {
     email,
     phoneNumber,
     jobTitle,
-    yearsOfExperince,
+    yearsOfExperience,
   } = user;
   return (
     <Link to={id.toString()}>
       <div className="table-row pointer">
-        <div className={classNames(yearsOfExperince <= 1 ? 'bold' : null)}>
+        <div className={classNames(yearsOfExperience <= 1 ? 'bold' : null)}>
           {fullName}
         </div>
         <div>{country}</div>
@@ -30,7 +30,7 @@ export const TableRow = ({ user }: IPropsType) => {
         <div>{email}</div>
         <div>{phoneNumber}</div>
         <div>{jobTitle}</div>
-        <div>{yearsOfExperince}</div>
+        <div>{yearsOfExperience}</div>
       </div>
     </Link>
   );

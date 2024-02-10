@@ -10,6 +10,7 @@ import { useForm } from 'hooks/useForm';
 
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { NoResults } from 'components/NoResults';
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -47,13 +48,13 @@ export const HomePage = () => {
     }
   };
 
-  const updateUser = async (newUser: IUser) => {
-    if (!utilsService.validateUser(newUser)) {
+  const updateUser = async (updatedUser: IUser) => {
+    if (!utilsService.validateUser(updatedUser)) {
       eventBusService.showErrorMsg('all fields are required');
       return;
     }
     try {
-      await usersService.save(newUser);
+      await usersService.save(updatedUser);
       const loadedUsers = await usersService.query(criteria);
       setUsers(loadedUsers);
       eventBusService.showSuccessMsg('user saved');
@@ -92,9 +93,11 @@ export const HomePage = () => {
         />
         <TableTitles onSortUsers={sortUsers} />
         <AddNewUser newUser={newUser} handleChange={handleChange} />
-        {users.map((user) => (
-          <TableRow key={user.id} user={user} />
-        ))}
+        {users.length > 0 ? (
+          users.map((user) => <TableRow key={user.id} user={user} />)
+        ) : (
+          <NoResults />
+        )}
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 CREATE SCHEMA `exam`;
-CREATE TABLE `exam`.`users` (
+CREATE TABLE `exam`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `fullName` VARCHAR(60) NOT NULL,
   `country` VARCHAR(45) NOT NULL,
   `city` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `phoneNumber` INT NOT NULL,
+  `email` VARCHAR(60) NOT NULL,
+  `phoneNumber` VARCHAR(45) NOT NULL,
   `jobTitle` VARCHAR(45) NOT NULL,
-  `yearsOfExperince` INT NOT NULL,
+  `yearsOfExperience` INT NOT NULL,
   PRIMARY KEY (`id`));
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';

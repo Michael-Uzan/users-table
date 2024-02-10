@@ -46,5 +46,5 @@ const TITLES = [
   { title: 'email', keyId: 'email' },
   { title: 'phone number', keyId: 'phoneNumber' },
   { title: 'job title', keyId: 'jobTitle' },
-  { title: 'years of experince', keyId: 'yearsOfExperince' },
+  { title: 'years of experience', keyId: 'yearsOfExperience' },
 ];

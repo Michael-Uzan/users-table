@@ -6,5 +6,5 @@ export interface IUser {
   email: string;
   phoneNumber: number;
   jobTitle: string;
-  yearsOfExperince: number;
+  yearsOfExperience: string;
 }

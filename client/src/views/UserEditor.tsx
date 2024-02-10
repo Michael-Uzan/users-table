@@ -46,7 +46,7 @@ export const UserEditor = () => {
     email,
     phoneNumber,
     jobTitle,
-    yearsOfExperince,
+    yearsOfExperience,
   } = updatedUser;
 
   return (
@@ -95,9 +95,9 @@ export const UserEditor = () => {
           <label>
             <div className="desc">{'Phone Number: '}</div>
             <input
-              type="number"
+              type="text"
               name="phoneNumber"
-              value={phoneNumber || ''}
+              value={phoneNumber}
               onChange={handleChange}
             />
           </label>
@@ -114,8 +114,8 @@ export const UserEditor = () => {
             <div className="desc">{'Years of Experinces: '}</div>
             <input
               type="number"
-              name="yearsOfExperince"
-              value={yearsOfExperince || ''}
+              name="yearsOfExperience"
+              value={yearsOfExperience < 0 ? '' : yearsOfExperience}
               onChange={handleChange}
             />
           </label>

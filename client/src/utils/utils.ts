@@ -32,10 +32,10 @@ function validateUser(user: IUser): boolean {
     if (user.hasOwnProperty(key)) {
       const value = user[key as keyof IUser];
       if (typeof value === 'string' && value.trim() === '') {
-        return false; // Empty string
+        return false;
       }
-      if (typeof value === 'number' && value === 0) {
-        return false; // Zero value
+      if (typeof value === 'number' && value < 0) {
+        return false;
       }
     }
   }
@@ -49,8 +49,8 @@ function resetFields() {
     country: '',
     city: '',
     email: '',
-    phoneNumber: 0,
+    phoneNumber: '',
     jobTitle: '',
-    yearsOfExperince: 0,
+    yearsOfExperience: -1,
   };
 }

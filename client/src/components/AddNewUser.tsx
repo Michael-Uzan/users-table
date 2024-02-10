@@ -15,7 +15,7 @@ export const AddNewUser = ({ newUser, handleChange }: IPropsType) => {
     email,
     phoneNumber,
     jobTitle,
-    yearsOfExperince,
+    yearsOfExperience,
   } = newUser;
 
   return (
@@ -49,10 +49,10 @@ export const AddNewUser = ({ newUser, handleChange }: IPropsType) => {
         onChange={handleChange}
       />
       <input
-        type="number"
+        type="text"
         name="phoneNumber"
         placeholder="Enter phone number"
-        value={phoneNumber || ''}
+        value={phoneNumber}
         onChange={handleChange}
       />
       <input
@@ -64,9 +64,9 @@ export const AddNewUser = ({ newUser, handleChange }: IPropsType) => {
       />
       <input
         type="number"
-        name="yearsOfExperince"
+        name="yearsOfExperience"
         placeholder="Enter Years"
-        value={yearsOfExperince || ''}
+        value={yearsOfExperience < 0 ? '' : yearsOfExperience}
         onChange={handleChange}
       />
     </div>

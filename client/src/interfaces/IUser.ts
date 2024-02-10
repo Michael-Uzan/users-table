@@ -4,7 +4,7 @@ export interface IUser {
   country: string;
   city: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
   jobTitle: string;
-  yearsOfExperince: number;
+  yearsOfExperience: number;
 }

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { classNames } from 'primereact/utils';
 import { eventBusService } from '../services/event-bus.service';
 
+import { classNames } from 'primereact/utils';
 import React, { useEffect, useState } from 'react';
 
 interface IMessage {

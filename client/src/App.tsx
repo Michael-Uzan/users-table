@@ -7,7 +7,7 @@ function App() {
   return (
     <main className="main-container">
       <UserMsg />
-      <AppRoutes />;
+      <AppRoutes />
     </main>
   );
 }

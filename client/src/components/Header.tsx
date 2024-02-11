@@ -3,7 +3,7 @@ import { Button } from './common/Button';
 import Image from './common/Image';
 import imgAddUser from 'assets/imgs/add-user.png';
 
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, FormEvent, SetStateAction, useState } from 'react';
 import { AutoComplete } from 'primereact/autocomplete';
 
 interface IPropsType {
@@ -28,13 +28,20 @@ export const Header = ({
   const [searchTerm, setSearchTerm] = useState('');
 
   const search = ({ query }: { query: string }) => {
-    const regex = new RegExp(query);
-    setSuggestions([...usersName].filter((name) => regex.test(name)));
+    const regex = new RegExp(query.toLocaleLowerCase());
+    setSuggestions(
+      [...usersName].filter((name) => regex.test(name.toLocaleLowerCase())),
+    );
   };
 
   const onSearch = () => {
     onFilterUsers();
     setSearchTerm(criteria);
+  };
+
+  const onSubmit = (ev: FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    onSearch();
   };
 
   const clearResults = () => {
@@ -46,7 +53,7 @@ export const Header = ({
   return (
     <div className="header flex space-between align-center">
       <h1 className="title">{'Users Table'}</h1>
-      <div className="flex">
+      <form className="flex" onSubmit={onSubmit}>
         <div className="search-bar flex align-center">
           {searchTerm ? (
             <div className="results flex align-center">
@@ -89,7 +96,7 @@ export const Header = ({
           <Image className="button-header-img" src={imgAddUser} />
           <div className="button-header-title">{'Add New'}</div>
         </Button>
-      </div>
+      </form>
     </div>
   );
 };

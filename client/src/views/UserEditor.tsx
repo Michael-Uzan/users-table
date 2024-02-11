@@ -2,121 +2,48 @@
 import { useForm } from 'hooks/useForm';
 import { usersService } from 'services/users.service';
 import { utilsService } from 'utils/utils';
-
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { ModalWrapper } from 'components/common/ModalWrapper';
-import { UserEditorControls } from 'components/UserEditorControls';
+import { NoUserFound } from 'components/NoUserFound';
+import { EditUser } from 'components/EditUser';
+
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const UserEditor = () => {
   const { userId } = useParams();
   const [updatedUser, handleChange, setUpdatedUser] = useForm(
     utilsService.resetFields(),
   );
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     const loadUser = async () => {
       if (!userId) {
+        setError(true);
         return;
       }
 
       try {
         const loadedUser = await usersService.getUserById(+userId);
         setUpdatedUser(loadedUser);
+        setError(false);
       } catch (e) {
         // eslint-disable-next-line no-console
         console.warn(e);
+        setError(true);
       }
     };
 
     loadUser();
   }, [userId]);
 
-  const {
-    fullName,
-    country,
-    city,
-    email,
-    phoneNumber,
-    jobTitle,
-    yearsOfExperience,
-  } = updatedUser;
-
   return (
     <ModalWrapper title="edit user" className="user-editor">
-      <div className="inputs flex direction-col align-center">
-        <label>
-          <div className="desc">{'Full Name '}</div>
-          <input
-            placeholder="Enter Full Name"
-            type="text"
-            name="fullName"
-            value={fullName}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <div className="desc">{'Country '}</div>
-          <input
-            placeholder="Enter Country"
-            type="text"
-            name="country"
-            value={country}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <div className="desc">{'City '}</div>
-          <input
-            placeholder="Enter City"
-            type="text"
-            name="city"
-            value={city}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <div className="desc">{'Email '}</div>
-          <input
-            placeholder="Enter Email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <div className="desc">{'Phone Number '}</div>
-          <input
-            placeholder="Enter Phone Number"
-            type="text"
-            name="phoneNumber"
-            value={phoneNumber}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <div className="desc">{'Job Title '}</div>
-          <input
-            placeholder="Enter Job Title"
-            type="text"
-            name="jobTitle"
-            value={jobTitle}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <div className="desc">{'Years of Experinces '}</div>
-          <input
-            placeholder="Enter Years of Experince"
-            type="number"
-            name="yearsOfExperience"
-            value={yearsOfExperience < 0 ? '' : yearsOfExperience}
-            onChange={handleChange}
-          />
-        </label>
-      </div>
-      <UserEditorControls updatedUser={updatedUser} />
+      {error ? (
+        <NoUserFound />
+      ) : (
+        <EditUser updatedUser={updatedUser} onChange={handleChange} />
+      )}
     </ModalWrapper>
   );
 };

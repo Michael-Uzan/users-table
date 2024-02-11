@@ -6,7 +6,6 @@ import cors from "cors";
 import path from "path";
 
 let port: string;
-let host: string;
 
 dotenv.config();
 const app = express();

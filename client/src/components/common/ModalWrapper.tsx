@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 interface IPropsType {
   children: ReactNode;
   title: string;
-  className: string;
+  className?: string;
 }
 
 export const ModalWrapper = ({ children, title, className }: IPropsType) => {
